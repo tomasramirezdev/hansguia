@@ -84,6 +84,7 @@ export default function Hero() {
           <video
             ref={videoA}
             src="/hero-video.MP4"
+            autoPlay
             muted
             playsInline
             preload="auto"
@@ -96,6 +97,7 @@ export default function Hero() {
           <video
             ref={videoB}
             src="/hero-video.MP4"
+            autoPlay
             muted
             playsInline
             preload="auto"
