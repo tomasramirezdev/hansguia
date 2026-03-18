@@ -64,17 +64,7 @@ export default function Hero() {
   return (
     <section className="relative h-screen min-h-[600px] flex items-end overflow-hidden bg-ink">
 
-      {/* Static image background: shown while video loads or as fallback */}
-      <div className="absolute inset-0">
-        <Image
-          src="/Lagoa.jpg"
-          alt="Ilha Grande"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-      </div>
+      {/* Video Background Layer */}
 
       {/* Dual-video crossfade: Always rendered now */}
       <>
@@ -84,7 +74,6 @@ export default function Hero() {
           autoPlay
           muted
           playsInline
-          loop
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover z-[0]"
           style={{
@@ -98,7 +87,6 @@ export default function Hero() {
           autoPlay
           muted
           playsInline
-          loop
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover z-[0]"
           style={{
