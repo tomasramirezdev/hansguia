@@ -34,7 +34,7 @@ export default function Hero() {
   };
 
   useEffect(() => {
-    if (isMobile) return; // skip video logic on mobile
+    // We always want to try to play video if possible.
     const vA = videoA.current;
     const vB = videoB.current;
     if (!vA || !vB) return;
@@ -59,56 +59,54 @@ export default function Hero() {
 
     const interval = setInterval(tick, 250);
     return () => clearInterval(interval);
-  }, [isMobile]);
+  }, []);
 
   return (
     <section className="relative h-screen min-h-[600px] flex items-end overflow-hidden bg-ink">
 
-      {/* Mobile: static image background, fast to load */}
-      {isMobile && (
-        <div className="absolute inset-0">
-          <Image
-            src="/Lagoa.jpg"
-            alt="Ilha Grande"
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-        </div>
-      )}
+      {/* Static image background: shown while video loads or as fallback */}
+      <div className="absolute inset-0">
+        <Image
+          src="/Lagoa.jpg"
+          alt="Ilha Grande"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
 
-      {/* Desktop: dual-video crossfade */}
-      {!isMobile && (
-        <>
-          <video
-            ref={videoA}
-            src="/hero-video.mp4"
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              opacity: visibleVideo === "A" ? 1 : 0,
-              transition: `opacity ${CROSSFADE_SECONDS}s ease-in-out`,
-            }}
-          />
-          <video
-            ref={videoB}
-            src="/hero-video.mp4"
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              opacity: visibleVideo === "B" ? 1 : 0,
-              transition: `opacity ${CROSSFADE_SECONDS}s ease-in-out`,
-            }}
-          />
-        </>
-      )}
+      {/* Dual-video crossfade: Always rendered now */}
+      <>
+        <video
+          ref={videoA}
+          src="/hero-video.mp4"
+          autoPlay
+          muted
+          playsInline
+          loop
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover z-[0]"
+          style={{
+            opacity: visibleVideo === "A" ? 1 : 0,
+            transition: `opacity ${CROSSFADE_SECONDS}s ease-in-out`,
+          }}
+        />
+        <video
+          ref={videoB}
+          src="/hero-video.mp4"
+          autoPlay
+          muted
+          playsInline
+          loop
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover z-[0]"
+          style={{
+            opacity: visibleVideo === "B" ? 1 : 0,
+            transition: `opacity ${CROSSFADE_SECONDS}s ease-in-out`,
+          }}
+        />
+      </>
 
       {/* Cinematic dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#0e0c0a]/95 via-[#0e0c0a]/50 to-[#0e0c0a]/20 z-[1]" />

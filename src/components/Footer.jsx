@@ -45,7 +45,7 @@ export default function Footer() {
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-[13px] font-light text-white/45 transition-colors duration-150 hover:text-[#25D366]">WhatsApp</a>
             <span className="text-[13px] font-light text-white/45">hans@hansbustos.com.br</span>
             <span className="text-[13px] font-light text-white/45">Vila do Abraão, RJ</span>
-            <span className="text-[13px] font-light text-white/45 cursor-pointer transition-colors duration-150 hover:text-orange-300">Instagram</span>
+            <a href="https://www.instagram.com/hansguia/" target="_blank" rel="noopener noreferrer" className="text-[13px] font-light text-white/45 cursor-pointer transition-colors duration-150 hover:text-orange-300">Instagram</a>
           </div>
         </div>
 
@@ -54,7 +54,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row justify-between items-center pt-6 max-w-[1200px] mx-auto gap-4">
         <span className="text-[11px] text-white/20 text-center md:text-left">{t("footer.rights")}</span>
         <div className="flex gap-3">
-          <span className="text-[11px] text-white/20">Instagram</span>
+          <a href="https://www.instagram.com/hansguia/" target="_blank" rel="noopener noreferrer" className="text-[11px] text-white/20 hover:text-orange-300 transition-colors">Instagram</a>
           <span className="text-white/10">·</span>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-[11px] text-[#25D366]/50 hover:text-[#25D366] transition-colors">WhatsApp</a>
         </div>
